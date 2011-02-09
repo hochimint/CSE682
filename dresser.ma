@@ -1,6 +1,6 @@
 //Maya ASCII 2010 scene
 //Name: dresser.ma
-//Last modified: Tue, Feb 08, 2011 10:31:32 PM
+//Last modified: Tue, Feb 08, 2011 10:44:51 PM
 //Codeset: 1252
 requires maya "2010";
 requires "Mayatomr" "2010.0m - 3.7.53.5 ";
@@ -64,22 +64,6 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".man" -type "string" "side_mask";
 	setAttr ".hc" -type "string" "viewSet -s %camera";
 	setAttr ".o" yes;
-createNode transform -n "pCube1";
-	setAttr ".t" -type "double3" 0 100 0 ;
-	setAttr ".s" -type "double3" 152 4 102 ;
-createNode mesh -n "pCubeShape1" -p "pCube1";
-	addAttr -ci true -sn "mso" -ln "miShadingSamplesOverride" -min 0 -max 1 -at "bool";
-	addAttr -ci true -sn "msh" -ln "miShadingSamples" -min 0 -smx 8 -at "float";
-	addAttr -ci true -sn "mdo" -ln "miMaxDisplaceOverride" -min 0 -max 1 -at "bool";
-	addAttr -ci true -sn "mmd" -ln "miMaxDisplace" -min 0 -smx 1 -at "float";
-	setAttr -k off ".v";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
 createNode transform -n "pCube2";
 	setAttr ".t" -type "double3" 0 60 0 ;
 	setAttr ".s" -type "double3" 148 80 98 ;
@@ -91,7 +75,6 @@ createNode mesh -n "pCubeShape2" -p "transform4";
 	setAttr -s 2 ".iog[0].og";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
-	setAttr -s 3 ".ciog[0].cog";
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
@@ -130,7 +113,271 @@ createNode mesh -n "pCubeShape3" -p "transform1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "polySurface1";
+createNode transform -n "pCube8";
+	setAttr ".t" -type "double3" 0 32.5 5 ;
+	setAttr ".s" -type "double3" 144 21 94 ;
+createNode transform -n "transform7" -p "pCube8";
+	setAttr ".v" no;
+createNode mesh -n "pCubeShape8" -p "transform7";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "pCube9";
+	setAttr ".t" -type "double3" 0 57 5 ;
+	setAttr ".s" -type "double3" 144 21 94 ;
+createNode transform -n "transform5" -p "pCube9";
+	setAttr ".v" no;
+createNode mesh -n "pCubeShape9" -p "transform5";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr ".iog[0].og[0].gcl" -type "componentList" 1 "f[0:5]";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 
+		0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 
+		0 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 
+		0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 
+		4 5 0 6 7 0 0 2 0 1 3 0 
+		2 4 0 3 5 0 4 6 0 5 7 0 
+		6 0 0 7 1 0;
+	setAttr -s 6 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5 
+		mu 0 4 0 1 3 2 
+		f 4 1 7 -3 -7 
+		mu 0 4 2 3 5 4 
+		f 4 2 9 -4 -9 
+		mu 0 4 4 5 7 6 
+		f 4 3 11 -1 -11 
+		mu 0 4 6 7 9 8 
+		f 4 -12 -10 -8 -6 
+		mu 0 4 1 10 11 3 
+		f 4 10 4 6 8 
+		mu 0 4 12 0 2 13 ;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+createNode transform -n "pCube10";
+	setAttr ".t" -type "double3" 0 80.5 5 ;
+	setAttr ".s" -type "double3" 144 21 94 ;
+createNode transform -n "transform3" -p "pCube10";
+	setAttr ".v" no;
+createNode mesh -n "pCubeShape10" -p "transform3";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr ".iog[0].og[2].gcl" -type "componentList" 1 "f[0:5]";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 
+		0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 
+		0 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 
+		0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 
+		4 5 0 6 7 0 0 2 0 1 3 0 
+		2 4 0 3 5 0 4 6 0 5 7 0 
+		6 0 0 7 1 0;
+	setAttr -s 6 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5 
+		mu 0 4 0 1 3 2 
+		f 4 1 7 -3 -7 
+		mu 0 4 2 3 5 4 
+		f 4 2 9 -4 -9 
+		mu 0 4 4 5 7 6 
+		f 4 3 11 -1 -11 
+		mu 0 4 6 7 9 8 
+		f 4 -12 -10 -8 -6 
+		mu 0 4 1 10 11 3 
+		f 4 10 4 6 8 
+		mu 0 4 12 0 2 13 ;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+createNode transform -n "polySurface5";
+createNode transform -n "transform6" -p "polySurface5";
+	setAttr ".v" no;
+createNode mesh -n "polySurfaceShape5" -p "transform6";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "polySurface6";
+createNode transform -n "transform8" -p "polySurface6";
+	setAttr ".v" no;
+createNode mesh -n "polySurfaceShape6" -p "transform8";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "pCube11";
+	setAttr ".t" -type "double3" 0 0 100 ;
+	setAttr ".s" -type "double3" 143.600302 20.8 93.6 ;
+createNode transform -n "transform10" -p "pCube11";
+	setAttr ".v" no;
+createNode mesh -n "pCubeShape11" -p "transform10";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "pCube12";
+	setAttr ".t" -type "double3" 0 2 100 ;
+	setAttr ".s" -type "double3" 140.6 20.8 90.6 ;
+createNode transform -n "transform9" -p "pCube12";
+	setAttr ".v" no;
+createNode mesh -n "pCubeShape12" -p "transform9";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr ".iog[0].og[0].gcl" -type "componentList" 1 "f[0:5]";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 
+		0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 
+		0 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 
+		0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 
+		4 5 0 6 7 0 0 2 0 1 3 0 
+		2 4 0 3 5 0 4 6 0 5 7 0 
+		6 0 0 7 1 0;
+	setAttr -s 6 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5 
+		mu 0 4 0 1 3 2 
+		f 4 1 7 -3 -7 
+		mu 0 4 2 3 5 4 
+		f 4 2 9 -4 -9 
+		mu 0 4 4 5 7 6 
+		f 4 3 11 -1 -11 
+		mu 0 4 6 7 9 8 
+		f 4 -12 -10 -8 -6 
+		mu 0 4 1 10 11 3 
+		f 4 10 4 6 8 
+		mu 0 4 12 0 2 13 ;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+createNode transform -n "pCylinder1";
+	setAttr ".t" -type "double3" 0 0 105 ;
+	setAttr ".s" -type "double3" 10 1 5 ;
+createNode transform -n "transform12" -p "pCylinder1";
+	setAttr ".v" no;
+createNode mesh -n "pCylinderShape1" -p "transform12";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "pCube13";
+	setAttr ".t" -type "double3" 0 0 99 ;
+	setAttr ".s" -type "double3" 20 2 10 ;
+createNode transform -n "transform11" -p "pCube13";
+	setAttr ".v" no;
+createNode mesh -n "pCubeShape13" -p "transform11";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "polySurface9";
+createNode transform -n "transform14" -p "polySurface9";
+	setAttr ".v" no;
+createNode mesh -n "polySurfaceShape9" -p "transform14";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "pCylinder2";
+	setAttr ".t" -type "double3" 0 0 99 ;
+	setAttr ".s" -type "double3" 7 1 10 ;
+createNode transform -n "transform13" -p "pCylinder2";
+	setAttr ".v" no;
+createNode mesh -n "pCylinderShape2" -p "transform13";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "bottomDrawer";
+createNode transform -n "bottomDrawer1";
+	setAttr ".t" -type "double3" 0 24.5 0 ;
+createNode transform -n "bottomDrawer2";
+	setAttr ".t" -type "double3" 0 48.3 0 ;
+createNode transform -n "dresser";
+createNode transform -n "pCube1" -p "dresser";
+	setAttr ".t" -type "double3" 0 100 0 ;
+	setAttr ".s" -type "double3" 152 4 102 ;
+createNode mesh -n "pCubeShape1" -p "pCube1";
+	addAttr -ci true -sn "mso" -ln "miShadingSamplesOverride" -min 0 -max 1 -at "bool";
+	addAttr -ci true -sn "msh" -ln "miShadingSamples" -min 0 -smx 8 -at "float";
+	addAttr -ci true -sn "mdo" -ln "miMaxDisplaceOverride" -min 0 -max 1 -at "bool";
+	addAttr -ci true -sn "mmd" -ln "miMaxDisplace" -min 0 -smx 1 -at "float";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "polySurface1" -p "dresser";
 	setAttr ".t" -type "double3" 28 0 -4 ;
 createNode mesh -n "polySurfaceShape1" -p "polySurface1";
 	setAttr -k off ".v";
@@ -141,7 +388,7 @@ createNode mesh -n "polySurfaceShape1" -p "polySurface1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "polySurface2";
+createNode transform -n "polySurface2" -p "dresser";
 	setAttr ".t" -type "double3" -108 0 -4 ;
 createNode mesh -n "polySurfaceShape2" -p "polySurface2";
 	setAttr -k off ".v";
@@ -251,7 +498,7 @@ createNode mesh -n "polySurfaceShape2" -p "polySurface2";
 		11 10 9 8 7 6 5 4 3 2 1 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "polySurface3";
+createNode transform -n "polySurface3" -p "dresser";
 	setAttr ".t" -type "double3" -108 0 -94 ;
 createNode mesh -n "polySurfaceShape3" -p "polySurface3";
 	setAttr -k off ".v";
@@ -361,7 +608,7 @@ createNode mesh -n "polySurfaceShape3" -p "polySurface3";
 		11 10 9 8 7 6 5 4 3 2 1 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "polySurface4";
+createNode transform -n "polySurface4" -p "dresser";
 	setAttr ".t" -type "double3" 28 0 -94 ;
 createNode mesh -n "polySurfaceShape4" -p "polySurface4";
 	setAttr -k off ".v";
@@ -471,7 +718,7 @@ createNode mesh -n "polySurfaceShape4" -p "polySurface4";
 		11 10 9 8 7 6 5 4 3 2 1 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "pCube4";
+createNode transform -n "pCube4" -p "dresser";
 	setAttr ".t" -type "double3" 0 18 45 ;
 	setAttr ".s" -type "double3" 136 4 4 ;
 createNode mesh -n "pCubeShape4" -p "pCube4";
@@ -483,7 +730,7 @@ createNode mesh -n "pCubeShape4" -p "pCube4";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "pCube5";
+createNode transform -n "pCube5" -p "dresser";
 	setAttr ".t" -type "double3" 0 18 -45 ;
 	setAttr ".s" -type "double3" 136 4 4 ;
 createNode mesh -n "pCubeShape5" -p "pCube5";
@@ -519,7 +766,7 @@ createNode mesh -n "pCubeShape5" -p "pCube5";
 		mu 0 4 12 0 2 13 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "pCube6";
+createNode transform -n "pCube6" -p "dresser";
 	setAttr ".t" -type "double3" -68 18 0 ;
 	setAttr ".r" -type "double3" 0 90 0 ;
 	setAttr ".s" -type "double3" 90 4 4 ;
@@ -532,7 +779,7 @@ createNode mesh -n "pCubeShape6" -p "pCube6";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "pCube7";
+createNode transform -n "pCube7" -p "dresser";
 	setAttr ".t" -type "double3" 68 18 0 ;
 	setAttr ".r" -type "double3" 0 90 0 ;
 	setAttr ".s" -type "double3" 90 4 4 ;
@@ -569,133 +816,7 @@ createNode mesh -n "pCubeShape7" -p "pCube7";
 		mu 0 4 12 0 2 13 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "pCube8";
-	setAttr ".t" -type "double3" 0 32.5 5 ;
-	setAttr ".s" -type "double3" 144 21 94 ;
-createNode transform -n "transform7" -p "pCube8";
-	setAttr ".v" no;
-createNode mesh -n "pCubeShape8" -p "transform7";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "pCube9";
-	setAttr ".t" -type "double3" 0 57 5 ;
-	setAttr ".s" -type "double3" 144 21 94 ;
-createNode transform -n "transform5" -p "pCube9";
-	setAttr ".v" no;
-createNode mesh -n "pCubeShape9" -p "transform5";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr ".iog[0].og[0].gcl" -type "componentList" 1 "f[0:5]";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 
-		0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 
-		0 0.875 0.25 0.125 0 0.125 0.25;
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 
-		0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
-	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 
-		4 5 0 6 7 0 0 2 0 1 3 0 
-		2 4 0 3 5 0 4 6 0 5 7 0 
-		6 0 0 7 1 0;
-	setAttr -s 6 ".fc[0:5]" -type "polyFaces" 
-		f 4 0 5 -2 -5 
-		mu 0 4 0 1 3 2 
-		f 4 1 7 -3 -7 
-		mu 0 4 2 3 5 4 
-		f 4 2 9 -4 -9 
-		mu 0 4 4 5 7 6 
-		f 4 3 11 -1 -11 
-		mu 0 4 6 7 9 8 
-		f 4 -12 -10 -8 -6 
-		mu 0 4 1 10 11 3 
-		f 4 10 4 6 8 
-		mu 0 4 12 0 2 13 ;
-	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
-	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "pCube10";
-	setAttr ".t" -type "double3" 0 80.5 5 ;
-	setAttr ".s" -type "double3" 144 21 94 ;
-createNode transform -n "transform3" -p "pCube10";
-	setAttr ".v" no;
-createNode mesh -n "pCubeShape10" -p "transform3";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 3 ".iog[0].og";
-	setAttr ".iog[0].og[2].gcl" -type "componentList" 1 "f[0:5]";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr -s 3 ".ciog[0].cog";
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 
-		0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 
-		0 0.875 0.25 0.125 0 0.125 0.25;
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 
-		0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
-	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 
-		4 5 0 6 7 0 0 2 0 1 3 0 
-		2 4 0 3 5 0 4 6 0 5 7 0 
-		6 0 0 7 1 0;
-	setAttr -s 6 ".fc[0:5]" -type "polyFaces" 
-		f 4 0 5 -2 -5 
-		mu 0 4 0 1 3 2 
-		f 4 1 7 -3 -7 
-		mu 0 4 2 3 5 4 
-		f 4 2 9 -4 -9 
-		mu 0 4 4 5 7 6 
-		f 4 3 11 -1 -11 
-		mu 0 4 6 7 9 8 
-		f 4 -12 -10 -8 -6 
-		mu 0 4 1 10 11 3 
-		f 4 10 4 6 8 
-		mu 0 4 12 0 2 13 ;
-	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
-	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "polySurface5";
-createNode transform -n "transform6" -p "polySurface5";
-	setAttr ".v" no;
-createNode mesh -n "polySurfaceShape5" -p "transform6";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "polySurface6";
-createNode transform -n "transform8" -p "polySurface6";
-	setAttr ".v" no;
-createNode mesh -n "polySurfaceShape6" -p "transform8";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "polySurface7";
+createNode transform -n "polySurface7" -p "dresser";
 createNode mesh -n "polySurfaceShape7" -p "polySurface7";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
@@ -705,131 +826,10 @@ createNode mesh -n "polySurfaceShape7" -p "polySurface7";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "pCube11";
-	setAttr ".t" -type "double3" 0 0 100 ;
-	setAttr ".s" -type "double3" 143.600302 20.8 93.6 ;
-createNode transform -n "transform10" -p "pCube11";
-	setAttr ".v" no;
-createNode mesh -n "pCubeShape11" -p "transform10";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "pCube12";
-	setAttr ".t" -type "double3" 0 2 100 ;
-	setAttr ".s" -type "double3" 140.6 20.8 90.6 ;
-createNode transform -n "transform9" -p "pCube12";
-	setAttr ".v" no;
-createNode mesh -n "pCubeShape12" -p "transform9";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr ".iog[0].og[0].gcl" -type "componentList" 1 "f[0:5]";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 
-		0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 
-		0 0.875 0.25 0.125 0 0.125 0.25;
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 
-		0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
-	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 
-		4 5 0 6 7 0 0 2 0 1 3 0 
-		2 4 0 3 5 0 4 6 0 5 7 0 
-		6 0 0 7 1 0;
-	setAttr -s 6 ".fc[0:5]" -type "polyFaces" 
-		f 4 0 5 -2 -5 
-		mu 0 4 0 1 3 2 
-		f 4 1 7 -3 -7 
-		mu 0 4 2 3 5 4 
-		f 4 2 9 -4 -9 
-		mu 0 4 4 5 7 6 
-		f 4 3 11 -1 -11 
-		mu 0 4 6 7 9 8 
-		f 4 -12 -10 -8 -6 
-		mu 0 4 1 10 11 3 
-		f 4 10 4 6 8 
-		mu 0 4 12 0 2 13 ;
-	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
-	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "pCylinder1";
-	setAttr ".t" -type "double3" 0 0 105 ;
-	setAttr ".s" -type "double3" 10 1 5 ;
-createNode transform -n "transform12" -p "pCylinder1";
-	setAttr ".v" no;
-createNode mesh -n "pCylinderShape1" -p "transform12";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr -s 7 ".ciog[0].cog";
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "pCube13";
-	setAttr ".t" -type "double3" 0 0 99 ;
-	setAttr ".s" -type "double3" 20 2 10 ;
-createNode transform -n "transform11" -p "pCube13";
-	setAttr ".v" no;
-createNode mesh -n "pCubeShape13" -p "transform11";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr -s 7 ".ciog[0].cog";
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "polySurface9";
-createNode transform -n "transform14" -p "polySurface9";
-	setAttr ".v" no;
-createNode mesh -n "polySurfaceShape9" -p "transform14";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "pCylinder2";
-	setAttr ".t" -type "double3" 0 0 99 ;
-	setAttr ".s" -type "double3" 7 1 10 ;
-createNode transform -n "transform13" -p "pCylinder2";
-	setAttr ".v" no;
-createNode mesh -n "pCylinderShape2" -p "transform13";
-	setAttr -k off ".v";
-	setAttr ".io" yes;
-	setAttr -s 2 ".iog[0].og";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "bottomDrawer";
-createNode transform -n "polySurface8" -p "bottomDrawer";
+createNode transform -n "polySurface8" -p "dresser";
 	setAttr ".t" -type "double3" 0 32.3 -98 ;
 	setAttr ".s" -type "double3" 0.99 0.96 1 ;
-createNode mesh -n "polySurfaceShape8" -p "|bottomDrawer|polySurface8";
+createNode mesh -n "polySurfaceShape8" -p "polySurface8";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -838,9 +838,9 @@ createNode mesh -n "polySurfaceShape8" -p "|bottomDrawer|polySurface8";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "polySurface10" -p "bottomDrawer";
+createNode transform -n "polySurface10" -p "dresser";
 	setAttr ".t" -type "double3" 45 35 -56 ;
-createNode mesh -n "polySurfaceShape10" -p "|bottomDrawer|polySurface10";
+createNode mesh -n "polySurfaceShape10" -p "polySurface10";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -849,9 +849,9 @@ createNode mesh -n "polySurfaceShape10" -p "|bottomDrawer|polySurface10";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-createNode transform -n "polySurface11" -p "bottomDrawer";
+createNode transform -n "polySurface11" -p "dresser";
 	setAttr ".t" -type "double3" -45 35 -56 ;
-createNode mesh -n "polySurfaceShape11" -p "|bottomDrawer|polySurface11";
+createNode mesh -n "polySurfaceShape11" -p "polySurface11";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -1064,12 +1064,10 @@ createNode mesh -n "polySurfaceShape11" -p "|bottomDrawer|polySurface11";
 		mu 0 6 195 194 51 50 49 48 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "bottomDrawer1";
-	setAttr ".t" -type "double3" 0 24.5 0 ;
-createNode transform -n "polySurface8" -p "bottomDrawer1";
-	setAttr ".t" -type "double3" 0 32.3 -98 ;
+createNode transform -n "polySurface12" -p "dresser";
+	setAttr ".t" -type "double3" 0 56.8 -98 ;
 	setAttr ".s" -type "double3" 0.99 0.96 1 ;
-createNode mesh -n "polySurfaceShape8" -p "|bottomDrawer1|polySurface8";
+createNode mesh -n "polySurfaceShape12" -p "polySurface12";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -1124,9 +1122,9 @@ createNode mesh -n "polySurfaceShape8" -p "|bottomDrawer1|polySurface8";
 		mu 0 4 0 1 3 2 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "polySurface10" -p "bottomDrawer1";
-	setAttr ".t" -type "double3" 45 35 -56 ;
-createNode mesh -n "polySurfaceShape10" -p "|bottomDrawer1|polySurface10";
+createNode transform -n "polySurface13" -p "dresser";
+	setAttr ".t" -type "double3" 45 59.5 -56 ;
+createNode mesh -n "polySurfaceShape13" -p "polySurface13";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -1339,9 +1337,9 @@ createNode mesh -n "polySurfaceShape10" -p "|bottomDrawer1|polySurface10";
 		mu 0 6 195 194 51 50 49 48 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "polySurface11" -p "bottomDrawer1";
-	setAttr ".t" -type "double3" -45 35 -56 ;
-createNode mesh -n "polySurfaceShape11" -p "|bottomDrawer1|polySurface11";
+createNode transform -n "polySurface14" -p "dresser";
+	setAttr ".t" -type "double3" -45 59.5 -56 ;
+createNode mesh -n "polySurfaceShape14" -p "polySurface14";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -1554,12 +1552,10 @@ createNode mesh -n "polySurfaceShape11" -p "|bottomDrawer1|polySurface11";
 		mu 0 6 195 194 51 50 49 48 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "bottomDrawer2";
-	setAttr ".t" -type "double3" 0 48.3 0 ;
-createNode transform -n "polySurface8" -p "bottomDrawer2";
-	setAttr ".t" -type "double3" 0 32.3 -98 ;
+createNode transform -n "polySurface15" -p "dresser";
+	setAttr ".t" -type "double3" 0 80.6 -98 ;
 	setAttr ".s" -type "double3" 0.99 0.96 1 ;
-createNode mesh -n "polySurfaceShape8" -p "|bottomDrawer2|polySurface8";
+createNode mesh -n "polySurfaceShape15" -p "polySurface15";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -1614,9 +1610,9 @@ createNode mesh -n "polySurfaceShape8" -p "|bottomDrawer2|polySurface8";
 		mu 0 4 0 1 3 2 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "polySurface10" -p "bottomDrawer2";
-	setAttr ".t" -type "double3" 45 35 -56 ;
-createNode mesh -n "polySurfaceShape10" -p "|bottomDrawer2|polySurface10";
+createNode transform -n "polySurface16" -p "dresser";
+	setAttr ".t" -type "double3" 45 83.3 -56 ;
+createNode mesh -n "polySurfaceShape16" -p "polySurface16";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -1829,9 +1825,9 @@ createNode mesh -n "polySurfaceShape10" -p "|bottomDrawer2|polySurface10";
 		mu 0 6 195 194 51 50 49 48 ;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
-createNode transform -n "polySurface11" -p "bottomDrawer2";
-	setAttr ".t" -type "double3" -45 35 -56 ;
-createNode mesh -n "polySurfaceShape11" -p "|bottomDrawer2|polySurface11";
+createNode transform -n "polySurface17" -p "dresser";
+	setAttr ".t" -type "double3" -45 83.3 -56 ;
+createNode mesh -n "polySurfaceShape17" -p "polySurface17";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
@@ -2333,13 +2329,13 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "                -showShapes 1\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n"
 		+ "                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n"
 		+ "                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"clipEditorPanel\" -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperGraphPanel\" -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n"
-		+ "                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"largeIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n"
-		+ "                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"largeIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
+		+ "\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperGraphPanel\" -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n                -zoom 1.31\n                -animateTransition 0\n"
+		+ "                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 5\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"largeIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n"
+		+ "                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n                -zoom 1.31\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 5\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"largeIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
 		+ "\t\t}\n\t}\n\tif ($useSceneConfig) {\n\t\tscriptedPanel -e -to $panelName;\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperShadePanel\" -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"visorPanel\" -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n"
 		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Texture Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"polyTexturePlacementPanel\" -l (localizedPanelLabel(\"UV Texture Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Texture Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"multiListerPanel\" (localizedPanelLabel(\"Multilister\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"multiListerPanel\" -l (localizedPanelLabel(\"Multilister\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Multilister\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"renderWindowPanel\" -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\tif ($useSceneConfig) {\n\t\tscriptedPanel -e -to $panelName;\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"blendShapePanel\" (localizedPanelLabel(\"Blend Shape\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\tblendShapePanel -unParent -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels ;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tblendShapePanel -edit -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynRelEdPanel\" -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"devicePanel\" (localizedPanelLabel(\"Devices\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\tdevicePanel -unParent -l (localizedPanelLabel(\"Devices\")) -mbv $menusOkayInPanels ;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tdevicePanel -edit -l (localizedPanelLabel(\"Devices\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"renderWindowPanel\" -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"blendShapePanel\" (localizedPanelLabel(\"Blend Shape\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\tblendShapePanel -unParent -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels ;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tblendShapePanel -edit -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n"
+		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynRelEdPanel\" -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"devicePanel\" (localizedPanelLabel(\"Devices\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\tdevicePanel -unParent -l (localizedPanelLabel(\"Devices\")) -mbv $menusOkayInPanels ;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tdevicePanel -edit -l (localizedPanelLabel(\"Devices\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
 		+ "\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"relationshipPanel\" -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"referenceEditorPanel\" -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"componentEditorPanel\" (localizedPanelLabel(\"Component Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"componentEditorPanel\" -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynPaintScriptedPanelType\" -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"scriptEditorPanel\" -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"Stereo\" -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels `;\nstring $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n"
@@ -2391,7 +2387,6 @@ select -ne :hardwareRenderGlobals;
 select -ne :defaultHardwareRenderGlobals;
 	setAttr ".fn" -type "string" "im";
 	setAttr ".res" -type "string" "ntsc_4d 646 485 1.333";
-connectAttr "polyCube1.out" "pCubeShape1.i";
 connectAttr "groupId5.id" "pCubeShape2.iog.og[2].gid";
 connectAttr ":initialShadingGroup.mwc" "pCubeShape2.iog.og[2].gco";
 connectAttr "groupParts3.og" "pCubeShape2.i";
@@ -2404,9 +2399,6 @@ connectAttr "groupId3.id" "pCubeShape3.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "pCubeShape3.iog.og[0].gco";
 connectAttr "groupParts2.og" "pCubeShape3.i";
 connectAttr "groupId4.id" "pCubeShape3.ciog.cog[0].cgid";
-connectAttr "polyBoolOp1.out" "polySurfaceShape1.i";
-connectAttr "polyCube4.out" "pCubeShape4.i";
-connectAttr "polyCube5.out" "pCubeShape6.i";
 connectAttr "groupId15.id" "pCubeShape8.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "pCubeShape8.iog.og[0].gco";
 connectAttr "groupParts6.og" "pCubeShape8.i";
@@ -2425,7 +2417,6 @@ connectAttr "groupId13.id" "polySurfaceShape6.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "polySurfaceShape6.iog.og[0].gco";
 connectAttr "groupParts5.og" "polySurfaceShape6.i";
 connectAttr "groupId14.id" "polySurfaceShape6.ciog.cog[0].cgid";
-connectAttr "polyBoolOp4.out" "polySurfaceShape7.i";
 connectAttr "groupId17.id" "pCubeShape11.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "pCubeShape11.iog.og[0].gco";
 connectAttr "groupParts7.og" "pCubeShape11.i";
@@ -2449,9 +2440,13 @@ connectAttr "groupId27.id" "pCylinderShape2.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "pCylinderShape2.iog.og[0].gco";
 connectAttr "groupParts11.og" "pCylinderShape2.i";
 connectAttr "groupId28.id" "pCylinderShape2.ciog.cog[0].cgid";
-connectAttr "polyBoolOp5.out" "|bottomDrawer|polySurface8|polySurfaceShape8.i";
-connectAttr "polyBoolOp7.out" "|bottomDrawer|polySurface10|polySurfaceShape10.i"
-		;
+connectAttr "polyCube1.out" "pCubeShape1.i";
+connectAttr "polyBoolOp1.out" "polySurfaceShape1.i";
+connectAttr "polyCube4.out" "pCubeShape4.i";
+connectAttr "polyCube5.out" "pCubeShape6.i";
+connectAttr "polyBoolOp4.out" "polySurfaceShape7.i";
+connectAttr "polyBoolOp5.out" "polySurfaceShape8.i";
+connectAttr "polyBoolOp7.out" "polySurfaceShape10.i";
 connectAttr ":defaultLightSet.msg" "lightLinker1.lnk[0].llnk";
 connectAttr ":initialShadingGroup.msg" "lightLinker1.lnk[0].olnk";
 connectAttr ":defaultLightSet.msg" "lightLinker1.lnk[1].llnk";
@@ -2544,8 +2539,7 @@ connectAttr "polySurfaceShape6.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape6.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCubeShape8.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCubeShape8.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
-connectAttr "|bottomDrawer|polySurface8|polySurfaceShape8.iog" ":initialShadingGroup.dsm"
-		 -na;
+connectAttr "polySurfaceShape8.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "pCubeShape11.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCubeShape11.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCubeShape12.iog.og[0]" ":initialShadingGroup.dsm" -na;
@@ -2554,26 +2548,18 @@ connectAttr "pCylinderShape1.iog.og[6]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCylinderShape1.ciog.cog[6]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCubeShape13.iog.og[6]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCubeShape13.ciog.cog[6]" ":initialShadingGroup.dsm" -na;
-connectAttr "|bottomDrawer|polySurface10|polySurfaceShape10.iog" ":initialShadingGroup.dsm"
-		 -na;
+connectAttr "polySurfaceShape10.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape9.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape9.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCylinderShape2.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "pCylinderShape2.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
-connectAttr "|bottomDrawer|polySurface11|polySurfaceShape11.iog" ":initialShadingGroup.dsm"
-		 -na;
-connectAttr "|bottomDrawer1|polySurface8|polySurfaceShape8.iog" ":initialShadingGroup.dsm"
-		 -na;
-connectAttr "|bottomDrawer1|polySurface10|polySurfaceShape10.iog" ":initialShadingGroup.dsm"
-		 -na;
-connectAttr "|bottomDrawer1|polySurface11|polySurfaceShape11.iog" ":initialShadingGroup.dsm"
-		 -na;
-connectAttr "|bottomDrawer2|polySurface8|polySurfaceShape8.iog" ":initialShadingGroup.dsm"
-		 -na;
-connectAttr "|bottomDrawer2|polySurface10|polySurfaceShape10.iog" ":initialShadingGroup.dsm"
-		 -na;
-connectAttr "|bottomDrawer2|polySurface11|polySurfaceShape11.iog" ":initialShadingGroup.dsm"
-		 -na;
+connectAttr "polySurfaceShape11.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "polySurfaceShape12.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "polySurfaceShape13.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "polySurfaceShape14.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "polySurfaceShape15.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "polySurfaceShape16.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "polySurfaceShape17.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "groupId1.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId2.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId3.msg" ":initialShadingGroup.gn" -na;
